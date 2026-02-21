@@ -198,15 +198,20 @@
 - UX: button disables during send, shows "Sending…", then success/error feedback inline
 - Uses `mode: 'no-cors'` fetch to avoid CORS issues with Google Apps Script
 
-**What Aaron needs to do manually:**
-1. Create Google Sheet "toddleSpot Waitlist" with headers: `Timestamp | Email | Source`
-2. Add the provided Google Apps Script via Extensions → Apps Script
-3. Deploy as Web app (Execute as: Me, Access: Anyone)
-4. Replace `YOUR_GOOGLE_APPS_SCRIPT_URL_HERE` in both HTML files with the deployment URL
+**Setup completed:**
+- Google Sheet "toddleSpot Waitlist" created with headers: Timestamp, Email, Source
+- Google Apps Script deployed as web app (parses form-urlencoded POST data via `e.parameter`)
+- Apps Script URL wired into both HTML files
+- Tested and confirmed working — emails appear in Sheet with correct timestamp, email, and source
+
+**Bug fixed during setup:**
+- Initial implementation used `mode: 'no-cors'` with `Content-Type: application/json`, but no-cors strips non-simple headers so the JSON body never arrived. Switched to `application/x-www-form-urlencoded` which works under no-cors and is parsed natively by Apps Script via `e.parameter`.
 
 **Artefacts updated:**
 - `/index.html` — Form submission JS + `<form>` tags + feedback CSS
 - `/mobile.html` — Same changes
+- Google Sheet "toddleSpot Waitlist" (Aaron's Google account)
+- Google Apps Script web app (Aaron's Google account)
 
 ---
 
@@ -218,7 +223,7 @@
 | 2 | Design landing page wireframe in Figma | Done (HTML mockup pushed to Figma) |
 | 3 | Deploy landing page to GitHub Pages | Done |
 | 3a | Configure GoDaddy DNS for toddlespot.co.uk | Done |
-| 3b | Wire up email collection (form backend) | Done (needs Apps Script URL) |
+| 3b | Wire up email collection (form backend) | Done |
 | 4 | Define detailed user stories for MVP app features | Pending |
 | 5 | Decide app technical architecture / tech stack | Pending |
 | 6 | Design app prototypes / wireframes | Pending |
