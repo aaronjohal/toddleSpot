@@ -271,6 +271,18 @@
     .final-cta .email-group input { background: var(--white); border-color: rgba(255,255,255,0.6); }
     .final-cta .email-group input:focus { border-color: var(--white); box-shadow: 0 0 0 3px rgba(255,255,255,0.4); }
 
+    /* ── Form feedback ── */
+    .email-group .form-msg {
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: 'Nunito', sans-serif;
+    }
+    .email-group .form-msg.success { color: #2e7d32; }
+    .email-group .form-msg.error { color: #c62828; }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
     /* ── FOOTER ── */
     footer {
       text-align: center;
@@ -317,10 +329,10 @@
       </div>
       <h1>Find <span class="highlight-pink">baby friendly</span> places near you</h1>
       <p class="tagline">Real ratings from real parents, so every outing is one less thing to stress about.</p>
-      <div id="signup" class="email-group">
-        <input type="email" placeholder="you@email.com" aria-label="Email address">
-        <button class="btn btn-yellow">Keep Me Posted</button>
-      </div>
+      <form id="signup" class="email-group" data-source="hero">
+        <input type="email" placeholder="you@email.com" aria-label="Email address" required>
+        <button type="submit" class="btn btn-yellow">Keep Me Posted</button>
+      </form>
       <p class="subtext">Free. No spam. Unsubscribe anytime.</p>
     </div>
   </section>
@@ -410,10 +422,10 @@
     <div class="container">
       <h2>Help us build the app parents deserve</h2>
       <p>Sign up and we'll let you know the moment it's ready.</p>
-      <div class="email-group">
-        <input type="email" placeholder="you@email.com" aria-label="Email address">
-        <button class="btn btn-yellow">Count Me In</button>
-      </div>
+      <form class="email-group" data-source="footer">
+        <input type="email" placeholder="you@email.com" aria-label="Email address" required>
+        <button type="submit" class="btn btn-yellow">Count Me In</button>
+      </form>
     </div>
   </section>
 
@@ -428,6 +440,59 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      // ⚠️ REPLACE THIS URL with your Google Apps Script deployment URL
+      var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzHe9EdL08wqTpJPjWSx0RuWY9SKMXO3vllZqF-v7y_Xi-Cze5ekcd50zfXZeXg2scaNA/exec';
+
+      document.querySelectorAll('form.email-group').forEach(function (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          var input = form.querySelector('input[type="email"]');
+          var btn = form.querySelector('button');
+          var email = input.value.trim();
+          var source = form.getAttribute('data-source') || 'unknown';
+
+          // Remove any existing message
+          var old = form.querySelector('.form-msg');
+          if (old) old.remove();
+
+          if (!email) return;
+
+          // Disable button while sending
+          btn.disabled = true;
+          var originalText = btn.textContent;
+          btn.textContent = 'Sending…';
+
+          fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, source: source })
+          })
+            .then(function () {
+              input.value = '';
+              var msg = document.createElement('p');
+              msg.className = 'form-msg success';
+              msg.textContent = "You're on the list! We'll be in touch.";
+              form.appendChild(msg);
+              btn.textContent = originalText;
+              btn.disabled = false;
+            })
+            .catch(function () {
+              var msg = document.createElement('p');
+              msg.className = 'form-msg error';
+              msg.textContent = 'Something went wrong — please try again.';
+              form.appendChild(msg);
+              btn.textContent = originalText;
+              btn.disabled = false;
+            });
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>

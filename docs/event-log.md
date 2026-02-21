@@ -189,6 +189,27 @@
 
 ---
 
+### 2026-02-21 — Email Collection Wired Up (Google Sheets)
+
+**What happened:**
+- Added form submission logic to both landing page files (`index.html` and `mobile.html`)
+- Both email signup forms (hero "Keep Me Posted" and footer "Count Me In") now POST to a Google Apps Script webhook
+- Submissions include timestamp, email, and source (`hero` or `footer`)
+- UX: button disables during send, shows "Sending…", then success/error feedback inline
+- Uses `mode: 'no-cors'` fetch to avoid CORS issues with Google Apps Script
+
+**What Aaron needs to do manually:**
+1. Create Google Sheet "toddleSpot Waitlist" with headers: `Timestamp | Email | Source`
+2. Add the provided Google Apps Script via Extensions → Apps Script
+3. Deploy as Web app (Execute as: Me, Access: Anyone)
+4. Replace `YOUR_GOOGLE_APPS_SCRIPT_URL_HERE` in both HTML files with the deployment URL
+
+**Artefacts updated:**
+- `/index.html` — Form submission JS + `<form>` tags + feedback CSS
+- `/mobile.html` — Same changes
+
+---
+
 ## Next Steps
 
 | # | Action | Status |
@@ -197,7 +218,7 @@
 | 2 | Design landing page wireframe in Figma | Done (HTML mockup pushed to Figma) |
 | 3 | Deploy landing page to GitHub Pages | Done |
 | 3a | Configure GoDaddy DNS for toddlespot.co.uk | Done |
-| 3b | Wire up email collection (form backend) | Pending |
+| 3b | Wire up email collection (form backend) | Done (needs Apps Script URL) |
 | 4 | Define detailed user stories for MVP app features | Pending |
 | 5 | Decide app technical architecture / tech stack | Pending |
 | 6 | Design app prototypes / wireframes | Pending |
