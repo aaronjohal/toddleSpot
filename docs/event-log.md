@@ -173,10 +173,11 @@
 - **Repo structure:** Production files at root, dev copies with Figma script in `landing-page-mockup/`
 - **Repo visibility:** Public (required for free GitHub Pages)
 
-**Pending (Aaron):**
-- Configure GoDaddy DNS: 4x A records pointing to GitHub Pages IPs + CNAME `www` → `aaronjohal.github.io`
-- Enable "Enforce HTTPS" in repo Settings → Pages once certificate is provisioned
-- Wire up email collection (form submission backend TBD)
+**Also completed:**
+- Configured GoDaddy DNS: 4x A records pointing to GitHub Pages IPs, CNAME `www` → `aaronjohal.github.io`
+- TLS certificate provisioned by GitHub (Let's Encrypt)
+- HTTPS enforced via repo Settings → Pages
+- Site live and secure at **https://toddlespot.co.uk**
 
 **Artefacts created:**
 - `/index.html` — Production landing page (no Figma script)
@@ -195,7 +196,7 @@
 | 1 | Define user stories for landing page | Done |
 | 2 | Design landing page wireframe in Figma | Done (HTML mockup pushed to Figma) |
 | 3 | Deploy landing page to GitHub Pages | Done |
-| 3a | Configure GoDaddy DNS for toddlespot.co.uk | Pending (Aaron) |
+| 3a | Configure GoDaddy DNS for toddlespot.co.uk | Done |
 | 3b | Wire up email collection (form backend) | Pending |
 | 4 | Define detailed user stories for MVP app features | Pending |
 | 5 | Decide app technical architecture / tech stack | Pending |
