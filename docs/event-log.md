@@ -159,13 +159,44 @@
 
 ---
 
+### 2026-02-21 — Landing Page Deployed via GitHub Pages
+
+**What happened:**
+- Restructured project for deployment: copied production-ready HTML files to repo root (with Figma capture script removed), kept dev copies in `landing-page-mockup/`
+- Initialised git repo, created `.gitignore`, added `CNAME` file for custom domain
+- Created public GitHub repo at https://github.com/aaronjohal/toddleSpot
+- Enabled GitHub Pages on `main` branch (root `/`)
+- Custom domain `toddlespot.co.uk` configured via CNAME file
+
+**Key decisions made:**
+- **Hosting:** GitHub Pages (free, static, supports custom domains with HTTPS)
+- **Repo structure:** Production files at root, dev copies with Figma script in `landing-page-mockup/`
+- **Repo visibility:** Public (required for free GitHub Pages)
+
+**Pending (Aaron):**
+- Configure GoDaddy DNS: 4x A records pointing to GitHub Pages IPs + CNAME `www` → `aaronjohal.github.io`
+- Enable "Enforce HTTPS" in repo Settings → Pages once certificate is provisioned
+- Wire up email collection (form submission backend TBD)
+
+**Artefacts created:**
+- `/index.html` — Production landing page (no Figma script)
+- `/mobile.html` — Production mobile landing page (no Figma script)
+- `/aaron.jpg` — Founder photo at repo root
+- `/CNAME` — Custom domain config
+- `/.gitignore` — Excludes .DS_Store, .obsidian/, .claude/
+- GitHub repo: https://github.com/aaronjohal/toddleSpot
+
+---
+
 ## Next Steps
 
 | # | Action | Status |
 |---|--------|--------|
 | 1 | Define user stories for landing page | Done |
 | 2 | Design landing page wireframe in Figma | Done (HTML mockup pushed to Figma) |
-| 3 | Build landing page (tech stack TBD) | Pending |
+| 3 | Deploy landing page to GitHub Pages | Done |
+| 3a | Configure GoDaddy DNS for toddlespot.co.uk | Pending (Aaron) |
+| 3b | Wire up email collection (form backend) | Pending |
 | 4 | Define detailed user stories for MVP app features | Pending |
 | 5 | Decide app technical architecture / tech stack | Pending |
 | 6 | Design app prototypes / wireframes | Pending |
