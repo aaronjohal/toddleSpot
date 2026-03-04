@@ -215,6 +215,35 @@
 
 ---
 
+### 2026-02-28 — Nav CTA Scroll Fix
+
+**What happened:**
+- Noticed that tapping "Get Early Access" in the nav scrolled users back up to the hero email form, which felt broken since it's already above the fold
+- Changed the nav anchor from `#signup` (hero form) to `#cta` (final CTA section at the bottom)
+- Now tapping "Get Early Access" smooth-scrolls down to the pink final CTA section with its own inline email form
+- Updated all four HTML files (production and dev copies) for consistency
+- Pushed to GitHub — live on toddlespot.co.uk
+
+**Artefacts updated:**
+- `/index.html` — Nav anchor + final CTA section id
+- `/mobile.html` — Same
+- `/landing-page-mockup/index.html` — Same
+- `/landing-page-mockup/mobile.html` — Same
+
+---
+
+### 2026-03-04 — Google Analytics 4 Added
+
+**What happened:**
+- Added GA4 tracking (Measurement ID: `G-JDKEWDSGRH`) to all four HTML files (production and dev copies)
+- Pushed to GitHub — live on toddlespot.co.uk
+- Motivated by realising we had zero visibility on landing page traffic and conversion
+
+**Artefacts updated:**
+- `/index.html`, `/mobile.html`, `/landing-page-mockup/index.html`, `/landing-page-mockup/mobile.html` — GA4 gtag snippet added
+
+---
+
 ## Next Steps
 
 | # | Action | Status |
@@ -224,6 +253,8 @@
 | 3 | Deploy landing page to GitHub Pages | Done |
 | 3a | Configure GoDaddy DNS for toddlespot.co.uk | Done |
 | 3b | Wire up email collection (form backend) | Done |
+| 3c | Add Google Analytics 4 tracking | Done |
+| 3d | Distribute landing page (parent groups, social, local communities) | Pending |
 | 4 | Define detailed user stories for MVP app features | Pending |
 | 5 | Decide app technical architecture / tech stack | Pending |
 | 6 | Design app prototypes / wireframes | Pending |
