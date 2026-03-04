@@ -261,6 +261,18 @@
 
 ---
 
+### 2026-03-04 — Distribution Plan Created
+
+**What happened:**
+- Created a free, Upminster-focused distribution plan to drive traffic and validate demand
+- 5 tactics across 2 weeks: local Facebook groups, personal WhatsApp, Instagram, Mumsnet Local, local venues
+- Set targets: 100+ visits, 10-20 signups, 10-20% conversion within 2 weeks
+
+**Artefact created:**
+- `docs/distribution-plan.md` — Full distribution plan with tactics, targets, and how to read the results
+
+---
+
 ## Next Steps
 
 | # | Action | Status |
