@@ -244,6 +244,23 @@
 
 ---
 
+### 2026-03-04 — Email Form Bug Fixed
+
+**What happened:**
+- Discovered email signups were silently failing — users saw "You're on the list!" but data never reached the Google Sheet
+- Root cause: the Apps Script deployment URL was stale, and the script used `getActiveSheet()` which doesn't work for standalone scripts
+- Fixed by using `SpreadsheetApp.openById()` with the explicit Sheet ID and creating a fresh deployment
+- Also updated deployment URL twice during debugging
+
+**Key learning:**
+- `mode: 'no-cors'` fetch always resolves as success, masking backend failures. Users saw a success message even when submissions failed. Consider adding a health check or switching to `cors` mode in future.
+
+**Artefacts updated:**
+- `/index.html`, `/mobile.html` — Updated Apps Script deployment URL
+- Google Apps Script `Code.gs` — Now uses explicit Sheet ID (`1sRJimEoctGj6o17giTkUAQDI5oHQ8ueM62DId_32jks`)
+
+---
+
 ## Next Steps
 
 | # | Action | Status |
