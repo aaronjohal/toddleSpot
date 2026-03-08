@@ -273,6 +273,35 @@
 
 ---
 
+### 2026-03-07 — Opportunity Log Created
+
+**What happened:**
+- Created a running log to capture adjacent business ideas, potential pivots, and opportunities as they emerge during distribution and customer conversations
+
+**Artefact created:**
+- `docs/opportunities.md` — Opportunity log with capture/evaluate/promote workflow
+
+---
+
+### 2026-03-08 — Project Directory Restructured
+
+**What happened:**
+- Reorganised file structure for clarity as the project grows
+- Deleted `landing-page-mockup/` (duplicate dev copies no longer needed)
+- Moved website files into `docs/` (GitHub Pages serves from `/docs` on `main`)
+- Moved product documentation into `product/` with `discovery/` and `planning/` sub-folders
+- Moved `aaron.jpg` into `docs/assets/` and updated HTML image paths
+- Updated GitHub Pages source from `/` to `/docs`
+
+**New structure:**
+- `docs/` — Website (index.html, mobile.html, assets/, CNAME)
+- `product/` — Product docs (event-log.md, discovery/, planning/)
+
+**Artefacts updated:**
+- All file paths updated; `landing-page-mockup/` deleted
+
+---
+
 ## Next Steps
 
 | # | Action | Status |
